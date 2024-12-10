@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Solar System</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .solar-system {
+            position: relative;
+            width: 100vmin;
+            height: 100vmin;
+        }
+
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20vmin;
+            height: 20vmin;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffd700, #ff8c00);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10vmin rgba(255, 160, 0, 0.5);
+        }
+
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform-origin: 50% 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .planet:hover {
+            transform: scale(1.5) translateX(var(--orbit-radius));
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Planet styles */
+        .mercury { width: 1vmin; height: 1vmin; background-color: #8c7e6d; }
+        .venus { width: 1.5vmin; height: 1.5vmin; background-color: #e3b048; }
+        .earth { width: 2vmin; height: 2vmin; background-color: #4f8fba; }
+        .mars { width: 1.5vmin; height: 1.5vmin; background-color: #c1440e; }
+        .jupiter { width: 4vmin; height: 4vmin; background-color: #e0ae6f; }
+        .saturn { 
+            width: 3.5vmin; 
+            height: 3.5vmin; 
+            background-color: #f4d47a;
+            box-shadow: 0 0 0 0.8vmin rgba(210, 180, 140, 0.4);
+        }
+        .uranus { width: 3vmin; height: 3vmin; background-color: #4fd0e7; }
+        .neptune { width: 3vmin; height: 3vmin; background-color: #4b70dd; }
+
+        /* Orbit styles */
+        .mercury-orbit { width: 26vmin; height: 26vmin; }
+        .venus-orbit { width: 32vmin; height: 32vmin; }
+        .earth-orbit { width: 40vmin; height: 40vmin; }
+        .mars-orbit { width: 48vmin; height: 48vmin; }
+        .jupiter-orbit { width: 62vmin; height: 62vmin; }
+        .saturn-orbit { width: 76vmin; height: 76vmin; }
+        .uranus-orbit { width: 86vmin; height: 86vmin; }
+        .neptune-orbit { width: 96vmin; height: 96vmin; }
+
+        /* Animation styles */
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+        }
+
+        .mercury { animation: orbit 2.9s linear infinite; --orbit-radius: 13vmin; }
+        .venus { animation: orbit 7.4s linear infinite; --orbit-radius: 16vmin; }
+        .earth { animation: orbit 12s linear infinite; --orbit-radius: 20vmin; }
+        .mars { animation: orbit 22.6s linear infinite; --orbit-radius: 24vmin; }
+        .jupiter { animation: orbit 142.6s linear infinite; --orbit-radius: 31vmin; }
+        .saturn { animation: orbit 354.4s linear infinite; --orbit-radius: 38vmin; }
+        .uranus { animation: orbit 1011.8s linear infinite; --orbit-radius: 43vmin; }
+        .neptune { animation: orbit 1982.8s linear infinite; --orbit-radius: 48vmin; }
+
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 1s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="solar-system">
+        <div class="sun"></div>
+        <div class="orbit mercury-orbit"></div>
+        <div class="planet mercury" data-info="Mercury: Rotation: 59 days, Revolution: 88 days, Moons: 0, Composition: Rocky"></div>
+        <div class="orbit venus-orbit"></div>
+        <div class="planet venus" data-info="Venus: Rotation: 243 days, Revolution: 225 days, Moons: 0, Composition: Rocky"></div>
+        <div class="orbit earth-orbit"></div>
+        <div class="planet earth" data-info="Earth: Rotation: 1 day, Revolution: 365 days, Moons: 1, Composition: Rocky"></div>
+        <div class="orbit mars-orbit"></div>
+        <div class="planet mars" data-info="Mars: Rotation: 1 day, Revolution: 687 days, Moons: 2, Composition: Rocky"></div>
+        <div class="orbit jupiter-orbit"></div>
+        <div class="planet jupiter" data-info="Jupiter: Rotation: 10 hours, Revolution: 12 years, Moons: 79, Composition: Gas Giant"></div>
+        <div class="orbit saturn-orbit"></div>
+        <div class="planet saturn" data-info="Saturn: Rotation: 11 hours, Revolution: 29 years, Moons: 82, Composition: Gas Giant"></div>
+        <div class="orbit uranus-orbit"></div>
+        <div class="planet uranus" data-info="Uranus: Rotation: 17 hours, Revolution: 84 years, Moons: 27, Composition: Ice Giant"></div>
+        <div class="orbit neptune-orbit"></div>
+        <div class="planet neptune" data-info="Neptune: Rotation: 16 hours, Revolution: 165 years, Moons: 14, Composition: Ice Giant"></div>
+    </div>
+    <div class="info-panel"></div>
+
+    <script>
+        // Add stars
+        function addStars() {
+            const solarSystem = document.querySelector('.solar-system');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = `${Math.random() * 2 + 1}px`;
+                star.style.height = star.style.width;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                solarSystem.appendChild(star);
+            }
+        }
+
+        // Show planet info
+        function showPlanetInfo() {
+            const planets = document.querySelectorAll('.planet');
+            const infoPanel = document.querySelector('.info-panel');
+
+            planets.forEach(planet => {
+                planet.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    infoPanel.textContent = planet.dataset.info;
+                    infoPanel.style.display = 'block';
+                });
+            });
+
+            document.addEventListener('click', () => {
+                infoPanel.style.display = 'none';
+            });
+        }
+
+        addStars();
+        showPlanetInfo();
+    </script>
+</body>
+</html>

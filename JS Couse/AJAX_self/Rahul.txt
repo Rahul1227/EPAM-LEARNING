@@ -1,0 +1,3 @@
+Hy,,, 
+this is just one attemppt to learn xhr and ajax in javascript
+all thanks to cwh

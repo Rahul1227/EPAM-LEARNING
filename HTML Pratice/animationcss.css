@@ -1,0 +1,64 @@
+body{
+    background:linear-gradient(rgba(56, 56, 56, 0.803), rgb(117, 117, 209));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 500px;
+    height: 500px;
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: orbit 3s linear infinite;
+
+}
+
+.box{
+    position: relative;
+    top: 120px;
+    width: 50px;
+    height: 50px;
+    background:radial-gradient(farthest-corner at 50% 50%,  rgb(69, 112, 198), rgb(43, 213, 99));
+    position: relative;
+   
+    border-radius: 50%;
+}
+
+
+@keyframes orbit {
+    /* 0%, 100%{
+        transform: translate(0, 0);
+    }
+
+    25%{
+        transform: translate(200px,0);
+
+    }
+
+    50%{
+        transform: translate(200px, 200px);
+    }
+
+    75%{
+        transform: translate(0,  200px);
+    } */
+    
+    from{
+        transform: rotate(0deg)
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.sun{
+    width: 300px;
+    height: 300px;
+    border: 2px solid rebeccapurple;
+    border-radius: 50%;
+    background:radial-gradient(farthest-corner at 50% 50%,  rgb(209, 209, 80), purple);
+    position: relative;
+    left: -390px;
+}

@@ -1,0 +1,15 @@
+{
+    "name":"rahul",
+    "roll":21053310,
+    "cgpas":{
+        "first":9.70,
+        "second":9.4,
+        "third":9.95,
+        "fourth":9.70,
+        "fifth":9.60,
+        "sixth":9.35
+    },
+    "sgpa":9.60,
+    "Placed company":"EPAM"
+
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    <script src="submit-complaint.js" defer></script>
+</head>
+<body>
+    <h2>Student Complaint Form</h2>
+    <form action="/submit-complaint" method="POST" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="on" target="_self" novalidate>
+        
+        <!-- Name Field -->
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="student_name" required><br><br>
+
+        <!-- Roll Number Field -->
+        <label for="rollno">Roll Number:</label><br>
+        <input type="text" id="rollno" name="roll_no" required><br><br>
+
+        <!-- Stream Field -->
+        <label for="stream">Stream:</label><br>
+        <input type="text" id="stream" name="student_stream" required><br><br>
+
+        <!-- Hostel Name Field -->
+        <label for="hostel">Hostel Name:</label><br>
+        <input type="text" id="hostel" name="hostel_name"><br><br>
+
+        <!-- Complaint Field -->
+        <label for="complaint">Complaint:</label><br>
+        <textarea id="complaint" name="complaint_details" rows="5" cols="33" required></textarea><br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit Complaint">
+    </form>
+</body>
+</html>
